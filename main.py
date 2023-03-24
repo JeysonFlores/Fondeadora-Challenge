@@ -1,13 +1,8 @@
 def destructure(array: list) -> list:
-    scoped_stack = []
-
-    for el in array:
+    for index, el in enumerate(array):
         if isinstance(el, list):
-            scoped_stack.extend(destructure(el))
-        else:
-            scoped_stack.append(el)
-
-    return scoped_stack
+            array[index:(index+1)] = destructure(el)
+    return array
 
 
 data = [1, [2, [3, [4, 5]]]]
