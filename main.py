@@ -1,5 +1,12 @@
 def destructure(array: list) -> list:
-    for index, el in enumerate(array):
-        if isinstance(el, list):
-            array[index : (index + 1)] = destructure(el)
+    it = 0
+    while it < len(array):
+        if isinstance(array[it], list):
+            if array[it]:
+                array[it : (it + 1)] = destructure(array[it])
+                it -= 1
+            else:
+                del array[it]
+                it -= 1
+        it += 1
     return array

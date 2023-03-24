@@ -25,6 +25,10 @@ class TestDestructure(unittest.TestCase):
         self.assertEqual(all(isinstance(el, int) for el in result), True)
         self.assertEqual(any(isinstance(el, list) for el in result), False)
 
+    def test_empty_lists(self):
+        result = destructure([[[], [[[]], []], [[[[]]], [1]]]])
+        self.assertEqual(result, [1])
+
     @unittest.expectedFailure
     def test_iterable_error(self):
         destructure(100)
